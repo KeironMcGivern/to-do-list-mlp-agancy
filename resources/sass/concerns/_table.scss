@@ -1,0 +1,47 @@
+$module: "table";
+
+table {
+    @apply border-collapse text-gray-500;
+}
+
+th {
+    text-align: inherit;
+}
+
+.#{$module} {
+    @apply w-full max-w-full;
+
+    &-row-completed {
+        @apply line-through;
+    }
+
+    td, th {
+        @apply py-2 px-6 align-middle bg-white;
+
+        &.flush {
+            @apply p-0;
+        }
+    }
+
+    tbody {
+        tr {
+            @apply border-b border-gray-200;
+
+            &:last-child {
+                @apply border-b-0;
+            }
+        }
+    }
+
+    thead {
+        @apply rounded-t;
+
+        tr {
+            @apply rounded-t border-b-2 border-gray-200;
+        }
+
+        th {
+            @apply align-bottom py-2 text-sm font-semibold text-gray-500;
+        }
+    }
+}

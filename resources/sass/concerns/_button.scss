@@ -1,0 +1,17 @@
+$module: "button";
+
+.#{$module} {
+    @apply  rounded inline-block text-center border-black text-white bg-blue-600;
+
+    &-submit {
+        @apply py-2 px-4
+    }
+
+    &-tick {
+        @apply bg-green-600 text-white;
+    }
+
+    &-cross {
+        @apply bg-red-600 text-white;
+    }
+}
