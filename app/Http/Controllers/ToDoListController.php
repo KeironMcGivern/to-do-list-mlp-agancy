@@ -20,8 +20,6 @@ class ToDoListController
 {
     public function index(): Response
     {
-        // Check for a list present in the system and return if present,
-        // if not we create a new list using the upsert function
         $list = ToDoList::get()->first() ?? (new UpsertToDoList())->execute();
 
         return Inertia::render('ToDoList', [

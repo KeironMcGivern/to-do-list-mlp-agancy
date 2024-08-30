@@ -1,5 +1,5 @@
 import { useForm } from '@inertiajs/react';
-import React, { useState } from 'react';
+import React from 'react';
 import shortid from 'shortid';
 
 const TodoListTable = ({ listItems }) => {
