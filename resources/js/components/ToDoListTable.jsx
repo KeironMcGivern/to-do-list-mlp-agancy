@@ -26,55 +26,66 @@ const TodoListTable = ({ listItems }) => {
                 <thead>
                     <tr>
                         <th className="w-9">#</th>
-                        <th >Task</th>
+                        <th>Task</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    {listItems.map(function (data, index) {
+                    {listItems && listItems.map(function (data, index) {
                         return <tr key={`task-${shortid()}-row`}>
-                            <td className='font-bold'>{index}</td>
+                            <td className='font-bold'>{index + 1}</td>
                             <td className={data.completed ? 'table-row-completed' : ''}>{data.content}</td>
                             <td className="flex justify-end">
-                                <div className="pr-2">
-                                    <form onSubmit={(e) => handleCompleteSubmit(e, data)}>
-                                        <button type="submit" className="button button-tick">
-                                            <svg
-                                                fill="currentColor"
-                                                width="25px"
-                                                height="25px"
-                                                viewBox="0 0 1024 1024"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                            >
-                                                <path
+                                {! data.completed && (
+                                    <>
+                                        <div className="pr-2">
+                                            <form onSubmit={(e) => handleCompleteSubmit(e, data)}>
+                                                <button type="submit" className="button button-tick">
+                                                    <svg
+                                                        fill="currentColor"
+                                                        width="25px"
+                                                        height="25px"
+                                                        viewBox="0 0 1024 1024"
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                    >
+                                                        <path
+                                                            fill="currentColor"
+                                                            fillRule="evenodd"
+                                                            d="M760 380.4l-61.6-61.6-263.2 263.1-109.6-109.5L264 534l171.2 171.2L760 380.4z"
+                                                        />
+                                                    </svg>
+                                                </button>
+                                            </form>
+                                        </div>
+                                        <form onSubmit={(e) => handleDeleteSubmit(e, data)}>
+                                            <button className="button button-cross">
+                                                <svg
                                                     fill="currentColor"
-                                                    fillRule="evenodd"
-                                                    d="M760 380.4l-61.6-61.6-263.2 263.1-109.6-109.5L264 534l171.2 171.2L760 380.4z"
-                                                />
-                                            </svg>
-                                        </button>
-                                    </form>
-                                </div>
-                                <form onSubmit={(e) => handleDeleteSubmit(e, data)}>
-                                    <button className="button button-cross">
-                                        <svg
-                                            fill="currentColor"
-                                            width="25px"
-                                            height="25px"
-                                            viewBox="0 0 1024 1024"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                        >
-                                            <path
-                                                fill="currentColor"
-                                                fillRule="evenodd"
-                                                d="M697.4 759.2l61.8-61.8L573.8 512l185.4-185.4-61.8-61.8L512 450.2 326.6 264.8l-61.8 61.8L450.2 512 264.8 697.4l61.8 61.8L512 573.8z"
-                                            />
-                                        </svg>
-                                    </button>
-                                </form>
+                                                    width="25px"
+                                                    height="25px"
+                                                    viewBox="0 0 1024 1024"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                >
+                                                    <path
+                                                        fill="currentColor"
+                                                        fillRule="evenodd"
+                                                        d="M697.4 759.2l61.8-61.8L573.8 512l185.4-185.4-61.8-61.8L512 450.2 326.6 264.8l-61.8 61.8L450.2 512 264.8 697.4l61.8 61.8L512 573.8z"
+                                                    />
+                                                </svg>
+                                            </button>
+                                        </form>
+                                    </>
+                                )}
                             </td>
                         </tr>
                     })}
+                    {!listItems && (
+                        <tr>
+                            <td></td>
+                            <td>Please add a task to continue</td>
+                            <td></td>
+                        </tr>
+                    )}
                 </tbody>
             </table>
 

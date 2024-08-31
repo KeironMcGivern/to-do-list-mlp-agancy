@@ -22,8 +22,6 @@ class UpsertToDoList
     {
         $list = $this->list ? $this->list : new ToDoList();
 
-        // I know we store no data in the To Do List itself but leaving the space for expansion
-        // could save time and pain down the line
         if (filled($this->data)) {
             $list->fill($this->data);
         }
